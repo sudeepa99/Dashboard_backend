@@ -24,4 +24,7 @@ public class Role {
     @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
 
+    @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
+    private Set<RoleRule> roleRules;
+
 }

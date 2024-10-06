@@ -19,4 +19,7 @@ public class Rule {
     private String name;
     private Date created_at;
     private Date updated_at;
+
+    @OneToMany (mappedBy = "rule", cascade = CascadeType.ALL)
+    private Set<RoleRule> roleRules;
 }
