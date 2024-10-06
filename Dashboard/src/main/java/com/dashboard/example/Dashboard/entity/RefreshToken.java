@@ -6,17 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
-@Table (name = "Rule")
-public class Rule {
+@Table (name = "RefreshToken")
+public class RefreshToken {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rule_id;
-    private String name;
-    private Date created_at;
-    private Date updated_at;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long token_id;
+    private String token;
+    private Date expires_at;
+
 }

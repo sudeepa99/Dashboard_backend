@@ -15,7 +15,7 @@ import java.util.Date;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int role_id;
+    private Long role_id;
     private String name;
     private Date created_at;
     private Date updated_at;
