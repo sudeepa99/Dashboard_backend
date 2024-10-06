@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Entity
-@Table (name = "RefreshToken")
+@Table (name = "refreshTokens")
 public class RefreshToken {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)

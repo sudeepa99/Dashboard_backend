@@ -6,12 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
+import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table (name = "Rule")
+@Table (name = "rules")
 public class Rule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
