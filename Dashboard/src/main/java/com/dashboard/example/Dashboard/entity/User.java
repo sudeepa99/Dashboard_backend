@@ -26,4 +26,8 @@ public class User {
 
     @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
+
+    @OneToOne (mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)//fetchtype.lazy aviod loading unnecessary data and improve performance.
+    private RefreshToken refreshToken;
+
 }

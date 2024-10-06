@@ -18,4 +18,8 @@ public class RefreshToken {
     private String token;
     private Date expires_at;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
 }
