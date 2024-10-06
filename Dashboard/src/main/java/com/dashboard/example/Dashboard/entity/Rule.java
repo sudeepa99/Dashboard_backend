@@ -7,17 +7,16 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
-@Table (name = "Role")
-public class Role {
+@Table (name = "Rule")
+public class Rule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int role_id;
+    private int rule_id;
     private String name;
     private Date created_at;
     private Date updated_at;
-
 }
