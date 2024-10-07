@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_roles")
+@Table(name = "user_role")
 public class UserRole {
 
     @EmbeddedId
