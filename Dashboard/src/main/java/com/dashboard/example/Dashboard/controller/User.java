@@ -36,12 +36,4 @@ public class User {
     public String deleteUser(@RequestBody User user) {
         return "User Deleted";
     }
-
-
-
-
-
-
-
-
 }
