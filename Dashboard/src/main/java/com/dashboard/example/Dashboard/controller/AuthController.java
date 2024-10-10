@@ -1,6 +1,5 @@
 package com.dashboard.example.Dashboard.controller;
 
-import com.dashboard.example.Dashboard.dto.LoginRequestDTO;
 import com.dashboard.example.Dashboard.dto.SignupRequestDTO;
 import com.dashboard.example.Dashboard.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "api/auth")
-public class User {
+public class AuthController {
 
     @Autowired
     private AuthService userService;
@@ -21,26 +20,33 @@ public class User {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> UserLogin(@RequestBody LoginRequestDTO loginRequest) {
-        String token = userService.
+    public ResponseEntity<String> UserLogin(@RequestParam String email, @RequestParam String password) {
+        String tokens = userService.login(email, password);
+        return ResponseEntity.ok(tokens);
     }
 
-    @GetMapping("/users")
-    public String getUsers() {
-        return "User List";
-    }
+//    @GetMapping("/users")
+//    public String getUsers() {
+//        return "User List";
+//    }
+//
+//    @PutMapping("/users/{id}")
+//    public String updateUser(@RequestBody AuthController user) {
+//        return "User Updated";
+//    }
+//    @PatchMapping("/users/{id}")
+//    public String updateUserPart(@RequestBody AuthController user) {
+//        return "User Partially Updated";
+//    }
+//
+//    @DeleteMapping("/users/{id}")
+//    public String deleteUser(@RequestBody AuthController user) {
+//        return "User Deleted";
+//    }
 
-    @PutMapping("/users/{id}")
-    public String updateUser(@RequestBody User user) {
-        return "User Updated";
-    }
-    @PatchMapping("/users/{id}")
-    public String updateUserPart(@RequestBody User user) {
-        return "User Partially Updated";
-    }
 
-    @DeleteMapping("/users/{id}")
-    public String deleteUser(@RequestBody User user) {
-        return "User Deleted";
-    }
 }
+
+
+
+
