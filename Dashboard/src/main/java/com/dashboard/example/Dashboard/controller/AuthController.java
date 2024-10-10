@@ -1,20 +1,18 @@
 package com.dashboard.example.Dashboard.controller;
 
+import com.dashboard.example.Dashboard.dto.LoginRequestDTO;
 import com.dashboard.example.Dashboard.dto.SignupRequestDTO;
-import com.dashboard.example.Dashboard.repo.UserRepository;
-import com.dashboard.example.Dashboard.service.UserService;
+import com.dashboard.example.Dashboard.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/auth")
 public class User {
 
     @Autowired
-    private UserService userService;
+    private AuthService userService;
 
     @PostMapping("/register")
     public ResponseEntity<String> UserRegister(@RequestBody SignupRequestDTO signupRequest) {
@@ -23,8 +21,8 @@ public class User {
     }
 
     @PostMapping("/login")
-    public String UserLogin(@RequestBody User user) {
-        return "User Logged in";
+    public ResponseEntity<LoginResponseDTO> UserLogin(@RequestBody LoginRequestDTO loginRequest) {
+        String token = userService.
     }
 
     @GetMapping("/users")
