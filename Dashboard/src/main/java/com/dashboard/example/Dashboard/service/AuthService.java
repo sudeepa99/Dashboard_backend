@@ -7,7 +7,6 @@ import com.dashboard.example.Dashboard.utill.JwtToken;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -46,6 +45,6 @@ public class AuthService {
         String accessToken = tokenUtil.createAccessToken(user.getUser_id());
         String refreshToken = tokenUtil.createRefreshToken(user.getUser_id());
 
-        return accessToken + " " + refreshToken;
+        return "Access-Token :"+accessToken + " " + "Refresh-Token :" + refreshToken;
     }
 }

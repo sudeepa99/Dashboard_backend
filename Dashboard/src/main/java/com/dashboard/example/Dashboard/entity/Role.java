@@ -21,10 +21,23 @@ public class Role {
     private Date created_at;
     private Date updated_at;
 
-    @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
-    private Set<UserRole> userRoles;
+//    @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
+//    private Set<UserRole> userRoles;
+//
+//    @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
+//    private Set<RoleRule> roleRules;
 
-    @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
-    private Set<RoleRule> roleRules;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "role_rules",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "rule_id")
+    )
+    private Set<Rule> rules;
+
+
 
 }

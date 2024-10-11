@@ -19,7 +19,7 @@ public class RefreshToken {
     private Date expires_at;
 
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "token_id")
     private User user;
 
 }

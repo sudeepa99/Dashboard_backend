@@ -20,6 +20,9 @@ public class Rule {
     private Date created_at;
     private Date updated_at;
 
-    @OneToMany (mappedBy = "rule", cascade = CascadeType.ALL)
-    private Set<RoleRule> roleRules;
+//    @OneToMany (mappedBy = "rule", cascade = CascadeType.ALL)
+//    private Set<RoleRule> roleRules;
+
+    @ManyToMany(mappedBy = "rules")
+    private Set<Role> roles;
 }

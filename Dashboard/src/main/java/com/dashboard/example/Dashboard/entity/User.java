@@ -24,10 +24,21 @@ public class User {
     private Date created_at;
     private Date updated_at;
 
-    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<UserRole> userRoles;
+//    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
+//    private Set<UserRole> userRoles;
+//
+//    @OneToOne (mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)//fetchtype.lazy aviod loading unnecessary data and improve performance.
+//    private RefreshToken refreshToken;
 
-    @OneToOne (mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)//fetchtype.lazy aviod loading unnecessary data and improve performance.
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private RefreshToken refreshToken;
 
 }
