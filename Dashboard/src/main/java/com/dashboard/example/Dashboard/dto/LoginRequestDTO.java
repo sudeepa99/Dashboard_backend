@@ -6,14 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Component
-public class SignupRequestDTO {
-    private String firstName;
-    private String lastName;
+public class LoginRequestDTO {
     private String email;
     private String password;
 }

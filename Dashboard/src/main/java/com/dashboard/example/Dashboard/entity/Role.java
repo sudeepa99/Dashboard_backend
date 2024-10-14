@@ -1,42 +1,41 @@
 package com.dashboard.example.Dashboard.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
+@Builder
 @Table (name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Long role_id;
+    @Column(nullable = false,unique = true)
     private String name;
     private Date created_at;
     private Date updated_at;
 
-//    @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
-//    private Set<UserRole> userRoles;
-//
-//    @OneToMany (mappedBy = "role", cascade = CascadeType.ALL)
-//    private Set<RoleRule> roleRules;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
-
+    @ManyToMany(mappedBy = "roles",fetch = FetchType.EAGER)
+    @JsonBackReference
+    private List<User> users;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "role_rules",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "rule_id")
-    )
     private Set<Rule> rules;
+
+
+
 
 
 

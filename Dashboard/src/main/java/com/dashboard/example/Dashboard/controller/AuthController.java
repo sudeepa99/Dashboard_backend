@@ -1,5 +1,6 @@
 package com.dashboard.example.Dashboard.controller;
 
+import com.dashboard.example.Dashboard.dto.LoginRequestDTO;
 import com.dashboard.example.Dashboard.dto.SignupRequestDTO;
 import com.dashboard.example.Dashboard.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    private AuthService userService;
+    AuthService userService;
+    @Autowired
+    private LoginRequestDTO loginRequestDTO;
 
     @PostMapping("/register")
     public ResponseEntity<String> UserRegister(@RequestBody SignupRequestDTO signupRequest) {
@@ -20,8 +23,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> UserLogin(@RequestParam String email, @RequestParam String password) {
-        String tokens = userService.login(email, password);
+    public ResponseEntity<String> UserLogin(@RequestBody LoginRequestDTO loginRequest ) {
+        String tokens = userService.login(loginRequest.getEmail() , loginRequest.getPassword());
         return ResponseEntity.ok(tokens);
     }
 

@@ -1,7 +1,9 @@
 package com.dashboard.example.Dashboard.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,11 +13,12 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Entity
+@Builder
 @Table (name = "rules")
 public class Rule {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rule_id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String name;
     private Date created_at;
     private Date updated_at;
@@ -23,6 +26,7 @@ public class Rule {
 //    @OneToMany (mappedBy = "rule", cascade = CascadeType.ALL)
 //    private Set<RoleRule> roleRules;
 
-    @ManyToMany(mappedBy = "rules")
+    @ManyToMany(mappedBy = "rules", fetch = FetchType.EAGER )
+    @JsonIgnore
     private Set<Role> roles;
 }

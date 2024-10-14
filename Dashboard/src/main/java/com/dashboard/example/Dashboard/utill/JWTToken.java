@@ -107,7 +107,7 @@ public class JWTToken {
     }
 
     private SecretKey getSignKey() {
-        String secretKey = "KwKK9l41WCILxjlpxnvAQteAhyLzb/OEQ2wh5Tfa0Qs=";
+        String secretKey = "0+laBH9a0XyOAsP+H6JVdjoMliiG2EdKmby5QL2JLh8=";
         if (secretKey == null || secretKey.isEmpty()) {
             throw new IllegalStateException("SECRET_KEY is not set");
         }

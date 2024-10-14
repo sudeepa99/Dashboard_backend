@@ -1,7 +1,9 @@
 package com.dashboard.example.Dashboard.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Entity
+@Builder
 @Table (name = "refreshTokens")
 public class RefreshToken {
     @Id
@@ -18,8 +21,8 @@ public class RefreshToken {
     private String token;
     private Date expires_at;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "token_id")
+    @OneToOne(mappedBy = "token")
+    @JsonBackReference
     private User user;
 
 }

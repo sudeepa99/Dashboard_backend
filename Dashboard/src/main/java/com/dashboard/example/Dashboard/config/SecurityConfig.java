@@ -1,6 +1,6 @@
 
 package com.dashboard.example.Dashboard.config;
-import com.example.demo.filter.JWTAuthFilter;
+import com.dashboard.example.Dashboard.utill.JWTAuthFilter;
 import com.dashboard.example.Dashboard.service.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
