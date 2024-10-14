@@ -1,5 +1,6 @@
 package com.dashboard.example.Dashboard.service;
 
+import com.dashboard.example.Dashboard.dto.GetUserListDTO;
 import com.dashboard.example.Dashboard.entity.User;
 import com.dashboard.example.Dashboard.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,14 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public GetUserListDTO<?> getAllUsers(){
+        List<User> users = userRepository.findAll();
+        return GetUserListDTO.builder()
+                .status(true)
+                .data(users)
+                .build();
     }
 
 }

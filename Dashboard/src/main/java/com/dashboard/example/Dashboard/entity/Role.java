@@ -19,9 +19,9 @@ import java.util.Set;
 @Table (name = "roles")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "role_id")
-    private Long role_id;
+    private int role_id;
     @Column(nullable = false,unique = true)
     private String name;
     private Date created_at;

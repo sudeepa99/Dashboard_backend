@@ -51,7 +51,7 @@ public class JWTToken {
     public List<?> generateAccessToken(User user){
         try{
             Map<String,Object> claims = new HashMap<>();
-            claims.put("id",user.getId());
+            claims.put("id",user.getUser_id());
             Date issueAt = new Date(System.currentTimeMillis());
             Date expireAt = new Date(System.currentTimeMillis() +  1000*60*60);
             String token =  Jwts.builder()
@@ -71,7 +71,7 @@ public class JWTToken {
     public List<?> generateRefreshToken(User user){
         try{
             Map<String,Object> claims = new HashMap<>();
-            claims.put("id",user.getId());
+            claims.put("id",user.getUser_id());
             Date issueAt = new Date(System.currentTimeMillis());
             Date expireAt = new Date(System.currentTimeMillis() +  1000*60*60*24);
             String token = Jwts.builder()

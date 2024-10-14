@@ -17,7 +17,7 @@ import java.util.Date;
 public class RefreshToken {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private long token_id;
+    private int token_id;
     private String token;
     private Date expires_at;
 

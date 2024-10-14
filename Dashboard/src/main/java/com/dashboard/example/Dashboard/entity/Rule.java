@@ -18,7 +18,7 @@ import java.util.Set;
 public class Rule {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private int rule_id;
     private String name;
     private Date created_at;
     private Date updated_at;
