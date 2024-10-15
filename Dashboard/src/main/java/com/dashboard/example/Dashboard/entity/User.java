@@ -7,8 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 
+import java.sql.Timestamp;
 import java.util.*;
 
 @Data
@@ -29,10 +31,10 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false)
-    private Date created_at;
-    @Column(nullable = false)
-    private Date updated_at;
+//    @Column(nullable = false)
+//    private Date created_at;
+//    @Column(nullable = false)
+//    private Date updated_at;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JsonManagedReference

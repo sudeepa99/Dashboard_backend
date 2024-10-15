@@ -20,13 +20,13 @@ public class Rule {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int rule_id;
     private String name;
-    private Date created_at;
-    private Date updated_at;
+//    private Date created_at;
+//    private Date updated_at;
 
 //    @OneToMany (mappedBy = "rule", cascade = CascadeType.ALL)
 //    private Set<RoleRule> roleRules;
 
-    @ManyToMany(mappedBy = "rules", fetch = FetchType.EAGER )
+    @ManyToMany(mappedBy = "rules", fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Role> roles;
 }

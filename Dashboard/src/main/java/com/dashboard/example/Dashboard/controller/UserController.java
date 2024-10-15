@@ -1,9 +1,6 @@
 package com.dashboard.example.Dashboard.controller;
 
-import com.dashboard.example.Dashboard.dto.GetUserListDTO;
-import com.dashboard.example.Dashboard.dto.SignupRequestDTO;
-import com.dashboard.example.Dashboard.dto.UserDTO;
-import com.dashboard.example.Dashboard.dto.UserUpdateDTO;
+import com.dashboard.example.Dashboard.dto.*;
 import com.dashboard.example.Dashboard.entity.User;
 import com.dashboard.example.Dashboard.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +27,13 @@ public class UserController {
     public UserUpdateDTO<?> updateUser(@PathVariable int id, @RequestBody UserDTO userDTO ){
         userDTO.setId(id);
         return userService.updateUser(userDTO);
+    }
+
+    //User Delete
+    @DeleteMapping("/{id}")
+    public UserDeleteDTO<?> deleteUser(@PathVariable int id) {
+        UserDTO userDTO = UserDTO.builder().id(id).build();
+        return userService.deleteUser(userDTO);
+
     }
 }
