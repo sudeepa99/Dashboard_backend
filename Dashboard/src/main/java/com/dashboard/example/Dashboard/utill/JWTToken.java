@@ -67,6 +67,14 @@ public class JWTToken {
             return null;
         }
     }
+    public String createAccessToken(User user ) {
+        return Jwts.builder()
+                .setSubject(user.getEmail())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + accessTokenExpiryTime))
+                .signWith(getSignKey())
+                .compact();
+    }
 
     public List<?> generateRefreshToken(User user){
         try{
@@ -86,15 +94,6 @@ public class JWTToken {
             System.err.println(e);
             return null;
         }
-    }
-
-    public String createAccessToken(User user ) {
-        return Jwts.builder()
-                .setSubject(user.getEmail())
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + accessTokenExpiryTime))
-                .signWith(getSignKey())
-                .compact();
     }
 
     public String createRefreshToken(User user) {

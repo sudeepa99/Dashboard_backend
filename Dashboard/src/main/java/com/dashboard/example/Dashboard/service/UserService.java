@@ -32,7 +32,7 @@ public class UserService {
             User user = existingUser.get();
             user.setFirstName(userDTO.getFirstName());
             user.setLastName(userDTO.getLastName());
-            user.setLastName(userDTO.getLastName());
+//            user.setLastName(userDTO.getLastName());
             userRepository.save(user);
             return UserUpdateDTO.builder()
                     .status(true)
